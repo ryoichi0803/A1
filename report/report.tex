@@ -8,78 +8,12 @@
 \date{}
 \maketitle
 \thispagestyle{empty}
+\clearpage
 
-\section{実験の目的}
-陽子やHeを主成分とする宇宙線(一次宇宙線)が地球大気内で崩壊することで生じる宇宙線(二次宇宙線)の中でも地表で安定して測定可能である$\mu$粒子の寿命を測定する。さらに、$\mu$粒子のスピン角運動量とそれによる磁気モーメントを関係付ける$g$因子を測定する。
-\section{理論}
-$c=\hbar=1$の単位系を用いる。
-\subsection{非相対論的Dirac方程式と$g$因子}
-スピン1/2、電荷$q$の粒子の$g$因子を非相対論的近似で求める。
+% 目的
+\input{purpose}
 
-電磁場$A^{\mu}=(A^0,\bm{A})$中の粒子(電荷$q$、質量$m$)に対するDirac方程式は次で与えられる。
-\begin{equation}
-(\gamma^{\mu}(p_{\mu}-qA_{\mu})-m)\psi=0
-\end{equation}
-ただし、$\gamma^{\mu}$はDiracのガンマ行列で、ここではDirac-Pauli表現
-\begin{equation}
-\gamma^0=\begin{pmatrix} I & 0 \\ 0 & -I \end{pmatrix},
-\gamma^i=\begin{pmatrix} 0 & \sigma^i \\ -\sigma^i & 0 \end{pmatrix}
-\end{equation}
-を用いる。$I$は2×2の単位行列、$\gamma^i(i=1,2,3)$はPauli行列の第$i$成分である。$\psi$を二成分スピノール$\bigl( \begin{smallmatrix} \psi_A \\ \psi_B \end{smallmatrix} \bigr)$で分解し、非相対論近似($E\simeq m$)と弱い場($|q\phi|\ll m$)を考慮
-\begin{equation}
-E+m-q\phi\simeq2m
-\end{equation}
-すると、$\psi_B$を消去することで
-\begin{equation}
-(\frac{(\bm{\sigma}\cdot(\bm{p}-q\bm{A}))^2}{2m}+q\phi+m)\psi_A=E\psi_A
-\end{equation}
-となる。また、$\bm{p}=-i\bm{\nabla}$より、演算子として
-\begin{equation}
-\bm{p}\times\bm{A}+\bm{A}\times\bm{p}=-i\bm{\nabla}\times\bm{A}=-i\bm{B}
-\end{equation}
-が成り立つので、結局、
-\begin{equation}
-(\frac{(\bm{p}-q\bm{A})^2}{2m}-\frac{q}{2m}\bm{\sigma}\cdot\bm{B}+q\phi+m)\psi_A=E\psi_A
-\end{equation}
-となる。これより、スピン1/2の粒子は磁場内で磁気モーメント
-\begin{equation}
-\bm{\mu}=\frac{q}{2m}\bm{\sigma}=g\frac{q}{2m}\bm{S}
-\end{equation}
-を持ち、非相対論的近似では$g$因子が2であることがわかる。
-\subsection{スピンの歳差運動}
-粒子の持つスピンによる磁気モーメントが外部磁場の影響で歳差運動を起こすことを見ていく。
+% 理論
+\input{theory}
 
-磁場とスピンの相互作用のHamiltonianは(6)式より
-\begin{equation}
-\mathcal{\hat{H}}=-g\frac{q}{2m}\bm{\hat{S}}\cdot\bm{B}
-\end{equation}
-で与えられる。磁場の方向にz軸をとると($\bm{B}=(0,0,B)$)、
-\begin{equation}
-\mathcal{\hat{H}}=-g\frac{q}{2m}\hat{S_z}{B}\equiv\omega\hat{S_z}
-\end{equation}
-となる。これより、時刻$t$のスピン状態ベクトルを$\left|\varphi(t)\right\rangle$としてスピンの各方向の期待値$\left\langle S_i(t)\right\rangle$は、時間発展演算子exp$(-i\mathcal{\hat{H}}t)$を用いて、
-\begin{equation}
-\left\langle\varphi(t)\right|\hat{S_i}\left|\varphi(t)\right\rangle=\left\langle\varphi(0)\right|e^{i\mathcal{\hat{H}}t}\hat{S_i}e^{-i\mathcal{\hat{H}}t}\left|\varphi(0)\right\rangle
-\end{equation}
-となる($i$=1,2,3)。$z$成分については、時間発展演算子とスピン演算子が可換なので
-\begin{equation}
-\left\langle S_z(t)\right\rangle=\left\langle S_i(0)\right\rangle
-\end{equation}
-となり、時間依存しない。$x$成分については、スピン各成分の交換関係
-\begin{equation}
-[\hat{S_i},\hat{S_j}]=\epsilon_{ijk}i\hat{S_k}
-\end{equation}
-とBaker-Hausdorffの補助定理
-\begin{equation}
-e^{\hat{A}t}\hat{B}e^{-\hat{A}t}=\hat{B}+t[\hat{A},\hat{B}]+\frac{t^2}{2!}[\hat{A},[\hat{A},\hat{B}]]+...
-\end{equation}
-を用いて
-\begin{align}
-\left\langle S_x(t)\right\rangle &=\left\langle\varphi(0)\right|e^{i\omega\hat{S_z}t}\hat{S_x}e^{-i\omega\hat{S_z}t}\left|\varphi(0)\right\rangle\notag\\&=\left\langle\varphi(0)\right|\hat{S_x}+i\omega t[\hat{S_z},\hat{S_x}]+\frac{(i\omega t)^2}{2!}[\hat{S_z},[\hat{S_z},\hat{S_x}]]+...\left|\varphi(0)\right\rangle\notag\\&=\left\langle S_x(0)\right\rangle\cos\omega t-\left\langle S_y(0)\right\rangle\sin\omega t
-\end{align}
-となり、期待値が角振動数$\omega$で振動していることがわかる。$y$方向についても同様である。よって、計測により$B$と$\omega$が求まれば、
-\begin{equation}
-g=\frac{2m\omega}{|q|B}
-\end{equation}
-と求めることができる。
 \end{document}
