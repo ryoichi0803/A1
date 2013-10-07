@@ -3,6 +3,10 @@
 #include <algorithm>
 #include <fstream>
 
+#include <TApplication.h>
+#include <TCanvas.h>
+#include <TGraphErrors.h>
+#include <TF1.h>
 
 /* constant */
 const int buf_size = 256; // 無視して
@@ -30,6 +34,8 @@ void forOneChannel(std::ifstream& ifs, tdc_info info[channels]);
 /* entry point */
 int main(int argc, char* argv[])
 {
+  TApplication  app("app", &argc, argv);
+
   tdc_info info[channels][data_count];
   for (int i = 0; i < channels; ++i) {
     char filename[buf_size];
@@ -37,12 +43,26 @@ int main(int argc, char* argv[])
     std::cout << filename << std::endl;
     std::ifstream ifs(filename);
     forOneChannel(ifs, info[i]);
+    Double_t tdc[data_count];
+    Double_t tdc_error[data_count];
+    Double_t ns[data_count];
+    Double_t ns_error[data_count];
     for (int j = 0; j < data_count; ++j) {
-      std::cout << 100*j << "ns:" << std::endl;
-      std::cout << "mode:  " << info[i][j].mode << std::endl;
-      std::cout << "error: " << info[i][j].error << std::endl;
+      tdc[j] = info[i][j].mode;
+      tdc_error[j] = info[i][j].error;
+      ns[j] = 100 * (j + 1);
+      ns_error[j] = 1;
     }
+    TCanvas *can = new TCanvas(filename, filename, 10+10*i, 10+10*i, 700, 500);
+    TGraphErrors *gr = new TGraphErrors(data_count, tdc, ns, tdc_error, ns_error);
+    gr->Draw("ALP");
+    TF1 *fit = new TF1("fit", "[0] * x + [1]");
+    fit->SetParameters(7.6e-04, -100);
+    gr->Fit(fit);
+    can->Update();
   }
+
+  app.Run();
 
   return 0;
 }
