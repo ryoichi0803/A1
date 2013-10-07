@@ -16,6 +16,17 @@ const static Double_t intercept_error_table[] = {
 };
 
 /**
+ * @ GetNanoSecError
+ *
+ * 秒数のエラーを求める。
+ *
+ */
+inline
+Double_t GetNanoSecError(const int index, const Double_t tdc_channel) {
+  return std::sqrt(std::pow(static_cast<double>(grad_error_table[index]), 2)+std::pow(static_cast<double>(intercept_error_table[index]), 2));
+}
+
+/**
  * @ ConvertTdcChannelToNanoSec
  *
  * チャンネルインデックスとTDCチャンネルを引数にとって、対応する秒数を返す。
@@ -27,5 +38,5 @@ void ConvertTdcChannelToNanoSec(
                                 NanoSecWithError* ns)
 {
   ns->time = grad_table[index] * tdc_channel + intercept_table[index];
-  ns->error = std::sqrt(std::pow(static_cast<double>(grad_error_table[index]), 2)+std::pow(static_cast<double>(intercept_error_table[index]), 2));
+  ns->error = GetNanoSecError(index, tdc_channel);
 }
