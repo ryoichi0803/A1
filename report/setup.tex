@@ -1,4 +1,5 @@
 実験のセットアップ
+\section{セットアップ・及び実験原理}
 $\mu$を検出しアナログ信号に変えるために用いた装置は以下のものからなっている。
 ・プラスチックシンチレータ($100\times 48\times 1cm$)2枚
 ・プラスチックシンチレータ($120\times 5\times 1cm$)7枚
@@ -8,12 +9,12 @@ $\mu$を検出しアナログ信号に変えるために用いた装置は以下
 ・MPPC及びそのための基盤(詳細は後述)7つ
 ・光ファイバー7本
 以上の装置を次の図のように$\mu$の寿命測定(以下実験a)、$\mu$のg因子測定(以下実験b)それぞれ配置した。
-実験a
+\subsection{実験a}
 \begin{figure}[h]
   \includegraphics[width=10cm]{zikken_a.xcf}
   \caption{$\mu$の寿命測定}
 \end{figure}
-実験b
+\subsection{実験b}
 \begin{figure}[h]
   \includegraphics[width=10cm]{zikken_b.xcf}
 　\caption{$\mu$のg因子測定装置}
@@ -27,7 +28,7 @@ $\mu$を検出しアナログ信号に変えるために用いた装置は以下
 4.3で生じた陽電子がB、またはCにたどり着く。
 
 なお、実験aとbのそれぞれのセットアップでMPPCとPMT0の距離を変えたのは、aでは$\mu$のカウント数をなるべく増やして統計誤差を減らすために狭く設定したが、bではシンチレータに対してスピンの方向が垂直な向きであることを仮定しているので、あまり上のシンチレータと銅板との間隔が狭いと斜めからの$\mu$が入り込んでしまうことも考慮して、aより広く間隔を設定した。
-実験の回路図
+\section{実験の回路図}
 \begin{figure}[htbm]
   \includegraphics[width=10cm]{kairo.xcf}
   \caption{実験回路図}
@@ -35,7 +36,15 @@ $\mu$を検出しアナログ信号に変えるために用いた装置は以下
 また、この回路図でdelay31nsを組んでいるのは、MPPCとPMT0、PMT1の信号をCOINCIDENCEでタイミングを合わせるためである。
 この回路を論理記号を用いて表すと、
 \begin{itemize}
-$Start$信号 $(PMT0 \land MPPC)\lnot PMT1 $
-$Stop$信号0~6 $ MPPC 0~6 $
-$Stop$信号7 $ MPPC1 $
+Start信号 $(PMT0 \land MPPC)\lnot PMT1 $
+Stop信号0~6 $ MPPC 0~6 $
+Stop信号7 $ MPPC1 $
 となる。
+\section{TDCの較正}
+
+\section{PMT(光電子増倍管)・及びDiscriminatorの設定}
+ここで、$\mu$の寿命測定及びg因子測定で用いたPMTの電圧・及びDiscriminatorの設定の過程を述べる。
+\subsection{Discriminatorの閾値設定}
+まず、本実験で用いたDiscriminatorの閾値の設定方法について述べる。この閾値をうまく設けることでPMT及びMPPCからの信号のうち、$\mu$以外のものが来た時のノイズのイベントをシャットアウトし、検出したい$\mu$の信号のみを検出することができる。
+本実験では、まず最初にオシロスコープで各MPPCの信号を見たところ、弱いものは30mVくらいだったため、、まず最初にDiscriminatorの閾値を30mVに設定した。
+次に、PMT0とPMT1の電圧は上記と同じ閾値で$\mu$の信号を検出し、他のノイズをシャットアウトできるようにそれぞれ1700V、1750Vとして測定を開始した。しかし、この測定結果のグラフを見たところ、ため、これはDiscriminatorの閾値が低く、$\mu$以外のノイズも検出していると判断し、もう一度MPPCの$\mu$の信号を
