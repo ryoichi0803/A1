@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <cstdlib>
+#include <unistd.h>
 
 #include <TApplication.h>
 #include <TH1.h>
@@ -8,16 +10,32 @@
 
 #include "convert_tdc_to_ns.h"
 
-const int binCount = 100;
 const int minNanoSec = 1000;
 const int maxNanoSec = 20000;
 
+void GetFileName(char* buf, const char* filename) {
+  char* cwd = getcwd(NULL, 0);
+  std::sprintf(buf, "%s/%s", cwd, filename);
+  std::free(cwd);
+}
+
 int main(int argc, char *argv[])
 {
+  int binCount = 100;
+  if (argc > 2) {
+    std::cout << "too many argument. exit." << std::endl;
+    std::exit(1);
+  } else if (argc == 2) {
+    binCount = std::atoi(argv[1]);
+    --argc;
+  }
   TApplication app("app", &argc, argv);
 
   TH1D *hist = new TH1D("hist", "ns vs count", binCount, minNanoSec, maxNanoSec);
-  std::ifstream ifs("muon_g.dat");
+
+  char filename[256];
+  GetFileName(filename, "../data/muon_g/muon_g.dat");
+  std::ifstream ifs(filename);
   for (int i = 0; !ifs.eof(); ++i) {
     Double_t data;
     ifs >> data;
