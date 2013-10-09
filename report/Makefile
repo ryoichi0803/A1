@@ -10,4 +10,4 @@ report.pdf: $(DVIFILES)
 	$(TEX) $< && $(TEX) $<
 
 clean:
-	rm *.dvi *.log *.aux report.pdf
+	rm *.dvi *.log *.aux
