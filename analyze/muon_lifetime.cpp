@@ -7,6 +7,7 @@
 #include <TApplication.h>
 #include <TH1.h>
 #include <TF1.h>
+#include <TStyle.h>
 
 #include "convert_tdc_to_ns.h"
 
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
     --argc;
   }
   TApplication app("app", &argc, argv);
+  gStyle->SetOptStat(0);
 
   TH1D *hist = new TH1D("hist", "ns vs count", binCount, minNanoSec, maxNanoSec);
 

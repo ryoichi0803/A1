@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
   }
   hist->Draw();
 
-  TF1 *fit = new TF1("fit", "[0] * exp(- x / [1]) * (1 + [2] * cos([3] * x )) + [4]", 1000, 20000);
-  fit->SetParameters(200, 2100, 0.1, 5e-10, 20);
+  TF1 *fit = new TF1("fit", "[0] * exp(- x / [1]) * (1 + [2] * cos([3] * (x - [4]))) + [5]", 1000, 20000);
+  fit->SetParameters(200, 2100, 0.1, 5e-03, 500, 20);
   hist->Fit(fit, "R+");
 
   std::cout << "chi^2/ndf: ";
