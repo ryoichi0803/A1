@@ -26,19 +26,11 @@ B &= 18.8 \pm 0.4 \\
 を得た。このフィッティングにおける$\chi^2/\mathrm{ndf}$は1.00231であった。
 
 \subsection{$g$因子の解析}
-%%測定で出たデータを図\ref{}に示す。
-%% \begin{figure}
-%%  \centering
-%%  \includergraphics[width=5cm,clip]{}
-%%  \caption{$g$因子測定のヒストグラム}
-%%  \label{}
-%% \end{figure}
-
-このヒストグラムに対し、関数
+実験bで得られたデータを1000nsから20000nsの範囲をビン数100でヒストグラムにし、関数
 \begin{equation}
-G(t)=A\exp\Bigl(-\frac{t}{\tau}\Bigr)(1+B\cos(\omega(t-t_0)))+C
+G(t)=A\exp\left(-\frac{t}{\tau}\right)\exp\left(\frac{1}{2\omega\tau}\sin(\omega(t-t_0))\right)+C
 \end{equation}
-でフィッティングを行う。ただし、$A,B,C$は定数、$\tau$は寿命、$\omega$はスピンの歳差運動の振動数、$t_0$は初期位相を考慮した定数である。これは$\mu$粒子が磁場の影響で歳差運動を起こし(1.3参照)、その結果崩壊後飛び出す電子の運動の向きが変わることを考慮した。
+でフィッティングを行う。ただし、$A,B,C$は定数、$\tau$は寿命、$\omega$はスピンの歳差運動の振動数、$t_0$は初期位相を考慮した定数である。
 %% その結果を図\ref{}に示す。
 
 %% \begin{figure}
