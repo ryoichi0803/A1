@@ -13,22 +13,34 @@ $\mu^-$は負電荷を持ち、物質中(この実験では銅)の原子核�
 \end{equation}
 という反応で$\mu^-$が吸収され、見かけ上寿命が短くなる。この変化は粒子を受け止める物質によって異なり、今回の測定で用いる銅では、$\tau=0.16\,\mathrm{\mu s}$程度になる。
 
+\subsection{粒子の崩壊}
+一般に、粒子の崩壊は次の方程式に従う。
+\begin{equation}
+\frac{dN}{dt}=-\lambda N
+\end{equation}
+ただし、$\lambda\,[\mathrm{1/s}]$は定数である。この方程式を解くと
+\begin{equation}
+N = A\exp\left(-\frac{t}{\tau}\right)
+\end{equation}
+となる。ただし、$A$は次元を持たない定数で、$\tau$[s]を寿命という。
+
 \subsection{非相対論的Dirac方程式と$g$因子}
 スピン1/2、電荷$q$の粒子の$g$因子を非相対論的近似で求める。
+
 電磁場$A^{\mu}=(A^0,\bm{A})$中の粒子(電荷$q$、質量$m$)に対するDirac方程式は次で与えられる。
 \begin{equation}
 \left(\gamma^{\mu}(p_{\mu}-qA_{\mu})-m\right)\psi=0
 \end{equation}
 ただし、$\gamma^{\mu}$はDiracのガンマ行列で、ここではDirac-Pauli表現
 \begin{equation}
-\gamma^0=\begin{pmatrix} I & 0 \\ 0 & -I \end{pmatrix},
+\gamma^0=\begin{pmatrix} I & 0 \\ 0 & -I \end{pmatrix},\,
 \gamma^i=\begin{pmatrix} 0 & \sigma^i \\ -\sigma^i & 0 \end{pmatrix}
 \end{equation}
-を用いる。$I$は2×2の単位行列、$\gamma^i(i=1,2,3)$はPauli行列の第$i$成分である。$\psi$を二成分スピノール$\bigl( \begin{smallmatrix} \psi_A \\ \psi_B \end{smallmatrix} \bigr)$で分解し、非相対論近似($E\simeq m$)と弱い場($|q\phi|\ll m$)を考慮
+を用いる。$I$は2×2の単位行列、$\gamma^i(i=1,2,3)$はPauli行列の第$i$成分である。$\psi$を二成分スピノール$\bigl( \begin{smallmatrix} \psi_A \\ \psi_B \end{smallmatrix} \bigr)$で分解し、非相対論近似($E\simeq m$)と弱い場($|q\phi|\ll m$)を考慮すると、
 \begin{equation}
 E+m-q\phi\simeq2m
 \end{equation}
-すると、$\psi_B$を消去することで
+$\psi_B$を消去することで
 \begin{equation}
 \left(\frac{(\bm{\sigma}\cdot(\bm{p}-q\bm{A}))^2}{2m}+q\phi+m\right)\psi_A=E\psi_A
 \end{equation}
@@ -45,6 +57,7 @@ E+m-q\phi\simeq2m
 \bm{\mu}=\frac{q}{2m}\bm{\sigma}=g\frac{q}{2m}\bm{S}
 \end{equation}
 を持ち、非相対論的近似では$g$因子が2であることがわかる。
+
 \subsection{スピンの歳差運動}
 粒子の持つスピンによる磁気モーメントが外部磁場の影響で歳差運動を起こすことを見ていく。
 
@@ -74,10 +87,23 @@ e^{\hat{A}t}\hat{B}e^{-\hat{A}t}=\hat{B}+t[\hat{A},\hat{B}]+\frac{t^2}{2!}[\hat{
 \end{equation}
 を用いて
 \begin{align}
-\left\langle S_x(t)\right\rangle &=\left\langle\varphi(0)\right|e^{i\omega\hat{S_z}t}\hat{S_x}e^{-i\omega\hat{S_z}t}\left|\varphi(0)\right\rangle\notag\\&=\left\langle\varphi(0)\right|\hat{S_x}+i\omega t[\hat{S_z},\hat{S_x}]+\frac{(i\omega t)^2}{2!}[\hat{S_z},[\hat{S_z},\hat{S_x}]]+...\left|\varphi(0)\right\rangle\notag\\&=\left\langle S_x(0)\right\rangle\cos\omega t-\left\langle S_y(0)\right\rangle\sin\omega t
+\left\langle S_x(t)\right\rangle &=\left\langle\varphi(0)\right|e^{i\omega\hat{S_z}t}\hat{S_x}e^{-i\omega\hat{S_z}t}\left|\varphi(0)\right\rangle\notag \\
+&=\left\langle\varphi(0)\right|\hat{S_x}+i\omega t[\hat{S_z},\hat{S_x}]+\frac{(i\omega t)^2}{2!}[\hat{S_z},[\hat{S_z},\hat{S_x}]]+...\left|\varphi(0)\right\rangle\notag \\
+&=\left\langle S_x(0)\right\rangle\cos\omega t-\left\langle S_y(0)\right\rangle\sin\omega t
 \end{align}
 となり、期待値が角振動数$\omega$で振動していることがわかる。$y$方向についても同様である。よって、計測により$B$と$\omega$が求まれば、
 \begin{equation}
 g=\frac{2m\omega}{|q|B}
 \end{equation}
 と求めることができる。
+
+\subsection{歳差運動による方程式の補正}
+スピンの方向によって電子が飛びやすい方向が異なり、スピンが歳差運動している状況で、粒子の崩壊の方程式は
+\begin{equation}
+\frac{dN}{dt}=-\frac{\lambda}{2}N(1+\cos\omega t)
+\end{equation}
+と修正できる。この方程式を解くと
+\begin{equation}
+N = A\exp\left(-\frac{t}{\tau}\right)\exp\left(-\frac{1}{2\omega\tau}\sin(\omega t+\phi)\right)
+\end{equation}
+となる。ただし、$A,\phi$は次元を持たない定数である。
