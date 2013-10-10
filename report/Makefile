@@ -6,8 +6,8 @@ DVIFILES = report.dvi
 report.pdf: $(DVIFILES)
 	$(DVIPDF) -o $@ $(DVIFILES)
 
-.tex.dvi: report.tex
+.tex.dvi: report.tex purpose.tex theory.tex setup.tex analyze.tex study.tex
 	$(TEX) $< && $(TEX) $<
 
 clean:
-	rm *.dvi *.log *.aux report.pdf
+	rm *.dvi *.log *.aux
