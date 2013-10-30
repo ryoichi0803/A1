@@ -12,15 +12,16 @@ $\mu$を検出しアナログ信号に変えるために用いた装置は以
 \end{itemize}
 以上の装置を$\mu$の寿命測定(以下実験a)については図1、$\mu$の$g$因子測定(以下実験b)については図2にそれぞれ配置した。
 \begin{figure}[H]
-\centering
-  \includegraphics[width=10cm, bb=0 0 996 664,clip]{jikken1.jpg}
+ \begin{minipage}{0.5\hsize}
+  \centering
+  \includegraphics[width=10cm, bb=0 0 640 250,clip]{zikken_a.jpg}
   \caption{実験a}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-  \includegraphics[width=10cm, bb=0 0 1031 687,clip]{jikken2.jpg}
+ \end{minipage}
+ \begin{minipage}{0.5\hsize}
+  \centering
+  \includegraphics[width=10cm, bb=0 0 640 400,clip]{zikken_b.jpg}
   \caption{実験b}
+\end{minipage}
 \end{figure}
 
 ここで、A,B,Cはいずれもプラスチックシンチレータである。
@@ -48,6 +49,36 @@ $\mu$を検出しアナログ信号に変えるために用いた装置は以
 \end{itemize}
 となる。
 
+\subsection{MPPCについて}
+MPPC(Multi-pixel photon counter)はSi-PM(silicon photomultiplierと呼ばれるデバイスの1種で受光面内に多数のAPD(Avalanche Photo Diode)ピクセルが並べられた構造をしており、MPPCのシグナルはそれぞれのAPDピクセルが出すシグナルの総和となる。本実験ではMPPCを用いて測定を行ったので、以下にMPPCについて記す。
+\subsubsection{MPPCの特徴}
+MPPCには主に以下のような特徴が挙げられる。
+\begin{itemize}
+ \item コンパクトである。
+ \item 高いゲイン(約$10^6$)と光子検出効率がある
+ \item 磁場に対する耐性がある
+ \item 70V程度の低電圧で動作する
+ \item 安価である
+\end{itemize}
+上記のように、MPPCは光電子増倍管に比べて手軽に使用でき、かつ劣らない性質を持っているので今回の測定に使用した。
+\subsubsection{動作原理}
+まず、MPPCの1ピクセルを構成するAPDについて説明する。
+APDは下図のような構造をしており、逆電圧をかけることで半導体のpn接合部に高電場領域を形成、そこで電子雪崩を起こさせて信号を増幅するフォトダイオードである。下図にAPDの一般的な構造を示した。APDに逆電圧を印加すると検出器内部には図のような電場が形成される。入射光は吸収領域で電子-ホール対に変換される。生成された電子、ホールは電場によってそれぞれ反対方向にドリフトし、電子はpn接合部の高電場領域で雪崩増幅を起こす。増幅された電荷はシグナルとして読み出させる。
+雪崩による増幅率は、印加電圧をある電圧以上に上げると、わずかな光に対しても高電場領域内で放電現象を起こすようになる。この点をブレイクダウン電圧といい、この放電現象はガイガー放電と呼ばれる。ガイガー放電による電子の増幅率は約$10^6$にもなり、シグナルの大きさは入射フォトン数に依らない。つまりシグナルからは、フォトンを受光したかしなかったかだけがわかることになる。APDの動作方法において、ブレイクダウン電圧以上で動作させるものをガイガーモードという。
+\begin{figure}{H}
+ \centering
+ \includegraphics[width=100mm,bb=0 0 ]{MPPC1.jpg}
+ \caption{APDの構造の概念図}
+\end{figure}
+次に、MPPCの動作原理について述べる。
+MPPCは前述の通り、受光面内に多数のAPDピクセルが並べられた構造をしており、個々のAPDはガイガーモードで動作する。各ピクセルにおいてガイガー放電により放出される電荷量は入射フォトン数によらないので、1つのピクセルのフォトンを受光の有無の情報を出すデバイスとして動作する。すべてのピクセルが同じ増幅率をもつことで、MPPCシグナルの大きさからMPPCの受光面が受けた光量を求められる。
+本実験では、70Vのバイアス電圧をMPPCにかけることでガイガーモードで動作させ、mPPCの受光面がフォトンを受光したかどうかを検出するのに用いた。
+\subsubsection{MPPC回路}
+\begin{figure}{H}
+ \centering
+ \includegraphics[width=100mm,bb=0 0 ]{MPPC2.jpg}
+ \caption{MPPC回路図}
+\end{figure}
 \subsection{コイル}
   本実験の$g$因子測定において、磁場をコイルから発生させた。コイルは2004年度P1の課題研究用に作成されたものを使用した。このコイルはMainコイルとして4つのコイルを並列でつないだものを並べ、さらに2つのSubコイルを用いたものを使用した。
 Mainコイルには31.0Vで19.0A、sub1コイルには3.5Vで0.80A、sub2コイルには3.6Vで0.80Aの電流を流した。
